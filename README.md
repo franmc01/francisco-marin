@@ -7,7 +7,7 @@
      ```bash
      node -v
      ```
-   - If you don't have the correct version, install it from [nodejs.org](https://nodejs.org/).
+   - If you don't have the correct version, install it from [nodejs.org](https://nodejs.org/en/download/package-manager).
 
 2. **PNPM** (Dependency manager used by this project)
    - Install it globally with:  
@@ -48,7 +48,7 @@
    Run the backend with:
 
    ```bash
-   pnpm --filter {backend} run start:dev
+   pnpm run start:backend
    ```
 
 2. **Start the frontend after the backend:**
