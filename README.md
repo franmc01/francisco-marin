@@ -64,6 +64,6 @@
 ### **Access the Application**
 
 - **Frontend**: [http://localhost:4200](http://localhost:4200) (or the configured port)
-- **Backend**: Typically available at `http://localhost:3002` (or configured port).
+- **Backend**: [http://localhost:3200](http://localhost:3200) (or the configured port)
 
 ---
