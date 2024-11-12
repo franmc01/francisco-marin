@@ -1,0 +1,80 @@
+<div class="app-form-page">
+  <h2 class="app-form-page__title">
+    <span *ngIf="isEditMode; else createMode">Editar Producto</span>
+    <ng-template #createMode>Formulario de Registro</ng-template>
+  </h2>
+  <hr />
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="app-form-page__form">
+    <app-input
+      class="form-input"
+      label="Id"
+      formControlName="id"
+      [invalid]="form.get('id')?.invalid && form.get('id')?.touched"
+      [errorMessage]="getErrorMessage('id')"
+    ></app-input>
+
+    <app-input
+      class="form-input"
+      label="Nombre del producto"
+      formControlName="name"
+      [invalid]="form.get('name')?.invalid && form.get('name')?.touched"
+      [errorMessage]="getErrorMessage('name')"
+    ></app-input>
+
+    <app-input
+      class="form-input"
+      label="Descripción"
+      formControlName="description"
+      [invalid]="
+        form.get('description')?.invalid && form.get('description')?.touched
+      "
+      [errorMessage]="getErrorMessage('description')"
+    ></app-input>
+
+    <app-input
+      class="form-input"
+      label="Logo"
+      formControlName="logo"
+      [invalid]="form.get('logo')?.invalid && form.get('logo')?.touched"
+      [errorMessage]="getErrorMessage('logo')"
+    ></app-input>
+
+    <app-input
+      class="form-input"
+      label="Fecha de Liberación"
+      type="date"
+      formControlName="date_release"
+      [invalid]="
+        form.get('date_release')?.invalid && form.get('date_release')?.touched
+      "
+      [errorMessage]="getErrorMessage('date_release')"
+    ></app-input>
+
+    <app-input
+      class="form-input"
+      label="Fecha de Revisión"
+      type="date"
+      formControlName="date_revision"
+      [invalid]="
+        form.get('date_revision')?.invalid && form.get('date_revision')?.touched
+      "
+      [errorMessage]="getErrorMessage('date_revision')"
+    ></app-input>
+
+    <div class="app-form-page__button">
+      <app-button
+        variant="terciary"
+        id="reset-data"
+        (click)="onReset()"
+        [disabled]="form.pristine"
+        >Reiniciar</app-button
+      >
+      <app-button
+        id="save-data"
+        type="submit"
+        [disabled]="form.pristine || form.invalid"
+        >Enviar</app-button
+      >
+    </div>
+  </form>
+</div>

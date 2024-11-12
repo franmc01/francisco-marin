@@ -1,0 +1,5 @@
+<div *ngIf="isVisible" class="toast" [ngClass]="message?.type">
+    <span class="toast-text">{{ message?.text }}</span>
+    <button class="toast-close" (click)="closeToast()">×</button>
+</div>
+  

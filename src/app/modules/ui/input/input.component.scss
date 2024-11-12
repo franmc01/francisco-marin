@@ -1,0 +1,32 @@
+.input-container {
+  input {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    min-width: 12.5rem;
+    font-size: 1rem;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+    }
+  }
+
+  .input-label {
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .error-message {
+    color: var(--danger-color);
+    margin-top: .5rem;
+    font-size: .75rem;
+  }
+
+  .error {
+    border-color: var(--danger-color);
+  }
+}

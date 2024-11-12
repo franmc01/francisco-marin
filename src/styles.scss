@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+
+:root {
+  --primary-color: #ffdd00;
+  --secondary-color: #0F265C;
+  --terciary-color: #E9ECF3;
+  --border-color: #e0e0e0;
+  --text-color: #333;
+  --hover-color: #f8f9fa;
+  --breakpoint-mobile: 768px;
+  --danger-color: #dc3545;
+}

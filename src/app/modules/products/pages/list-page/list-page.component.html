@@ -1,0 +1,121 @@
+<div class="app-list-page" (click)="closeAllMenus()">
+  <div class="app-list-page__header">
+    <app-input
+      class="search-input"
+      type="search"
+      placeholder="Buscar..."
+      (input)="onSearch($event)"
+    ></app-input>
+
+    <app-button
+      class="add-button"
+      variant="primary"
+      (click)="navigateToCreate()"
+      >Agregar</app-button
+    >
+  </div>
+
+  <div class="app-list-page__table-container">
+    <table class="responsive-table">
+      <thead class="responsive-table__header">
+        <tr>
+          <th>Logo</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Fecha de liberación</th>
+          <th>Fecha de reestructuración</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody class="responsive-table__body">
+        @for (item of paginatedProducts; track item.id) {
+        <tr>
+          <td data-label="Logo">
+            <div class="logo-circle">
+              <img
+                [src]="item.logo | imagePlaceholder"
+                alt="Logo del producto"
+                width="180"
+                height="40"
+              />
+            </div>
+          </td>
+          <td data-label="Nombre del producto">{{ item.name }}</td>
+          <td data-label="Descripción">{{ item.description }}</td>
+          <td data-label="Fecha de liberación">
+            {{ item.date_release | dateFormat : "dd/MM/yyyy" }}
+          </td>
+          <td data-label="Fecha de reestructuración">
+            {{ item.date_revision | dateFormat : "dd/MM/yyyy" }}
+          </td>
+          <td data-label="Acciones" class="actions-cell">
+            <button class="action-button" (click)="toggleMenu(item, $event)">
+              <i class="more-vertical-icon"></i>
+            </button>
+          </td>
+        </tr>
+        } @empty {
+        <tr>
+          <td colspan="12">
+            <div class="empty-message">No hay productos disponibles</div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="responsive-table__footer">
+      <span>{{ paginatedProducts.length }} Resultados</span>
+      <select class="page-select" (change)="onPageSizeChange($event, 1)">
+        <option *ngFor="let option of pageOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  @if (activeMenu) {
+  <div class="popup-menu" [ngStyle]="menuPosition">
+    <button
+      (click)="onActionClick('edit', activeMenu, $event)"
+      class="menu-item"
+    >
+      <i class="edit-icon"></i> Editar
+    </button>
+    <button
+      (click)="onActionClick('delete', activeMenu, $event)"
+      class="menu-item"
+    >
+      <i class="delete-icon"></i> Eliminar
+    </button>
+    <button
+      (click)="onActionClick('view', activeMenu, $event)"
+      class="menu-item"
+    >
+      <i class="view-icon"></i> Ver detalles
+    </button>
+  </div>
+  } @if (showDeleteModal) {
+  <div class="modal-overlay" (click)="closeDeleteModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h3>Confirmar eliminación</h3>
+
+      <div class="modal-content">
+        <p>
+          ¿Está seguro que desea eliminar el producto {{ itemToDelete?.name }}?
+        </p>
+      </div>
+
+      <div class="modal-actions">
+        <app-button variant="terciary" (click)="closeDeleteModal()"
+          >Cancelar</app-button
+        >
+        <app-button variant="primary" (click)="confirmDelete()"
+          >Eliminar</app-button
+        >
+      </div>
+    </div>
+  </div>
+  }
+</div>

@@ -1,0 +1,13 @@
+.app-footer {
+  height: 100%;
+  display: grid;
+  place-content: center;
+
+  &__author {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.875rem;
+  }
+}
